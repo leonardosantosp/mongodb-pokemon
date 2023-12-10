@@ -5,8 +5,9 @@ const Pokemon = require('../models/Pokemon')
 // Create - criação de dados
 router.post('/', async (req, res) => {
   //req.body
-  const { types, name, legendary, hp, attack, defense, speed, generation } =
-    req.body
+  const { types, name, hp, attack, defense, speed, generation } = req.body
+
+  const legendary = req.body.legendary === 'on'
 
   if (!types) {
     res.status(422).json({ error: 'O tipo é obrigatório!' })
@@ -29,12 +30,11 @@ router.post('/', async (req, res) => {
     // criando dados
     await Pokemon.create(pokemon)
 
-    res
-      .status(201)
-      .json({ message: 'Pokemon inserido no sistema com sucesso!' })
+    res.status(201)
   } catch (error) {
     res.status(500).json({ error: error })
   }
+  res.redirect('/pokemons')
 })
 
 // Read - leitura de dados

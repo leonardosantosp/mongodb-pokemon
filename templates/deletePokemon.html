@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BD Pokemons - Edit Pokémon</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Belanosima&family=Caprasimo&family=Fasthand&family=Noto+Sans&family=Permanent+Marker&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="/"
+        ><h2>BD<img src="./images/pokemon-logo.png" alt="logo" /></h2
+      ></a>
+      <nav>
+        <ul class="menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/newpokemon">New Pokémon</a></li>
+          <li><a href="/pokemons">All Pokémons</a></li>
+          <li><a href="/editpokemon">Edit Pokémon</a></li>
+          <li><a href="/deletepokemon">Delete Pokémon</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="pokemonList"></main>
+    <script>
+      // Função para carregar a lista de Pokémon
+      async function loadPokemonList() {
+        const response = await fetch('/pokemon')
+        const pokemons = await response.json()
+
+        const pokemonListContainer = document.getElementById('pokemonList')
+
+        // Limpa o conteúdo atual
+        pokemonListContainer.innerHTML = ''
+
+        // Adiciona cada Pokémon à lista
+        pokemons.forEach(pokemon => {
+          const pokemonDiv = document.createElement('div')
+          pokemonDiv.className = 'pokemon-item'
+
+          const pokemonInfo = document.createElement('div')
+          pokemonInfo.className = 'pokemon-info'
+
+          const pokemonName = document.createElement('h3')
+          pokemonName.textContent = pokemon.name
+
+          const pokemonTypes = document.createElement('p')
+          pokemonTypes.textContent = `Types: ${pokemon.types.join(', ')}`
+
+          const deleteButton = document.createElement('button')
+          deleteButton.textContent = 'Delete'
+          deleteButton.addEventListener('click', () =>
+            deletePokemon(pokemon._id)
+          )
+
+          pokemonInfo.appendChild(pokemonName)
+          pokemonInfo.appendChild(pokemonTypes)
+
+          pokemonDiv.appendChild(pokemonInfo)
+          pokemonDiv.appendChild(deleteButton)
+
+          pokemonListContainer.appendChild(pokemonDiv)
+        })
+      }
+
+      // Função para deletar um Pokémon
+      async function deletePokemon(pokemonId) {
+        try {
+          const response = await fetch(`/pokemon/${pokemonId}`, {
+            method: 'DELETE'
+          })
+
+          const result = await response.json()
+          alert(result.message)
+
+          // Recarrega a lista após a exclusão
+          loadPokemonList()
+        } catch (error) {
+          console.error('Error deleting Pokémon:', error)
+        }
+      }
+
+      // Carrega a lista de Pokémon ao carregar a página
+      loadPokemonList()
+    </script>
+  </body>
+</html>

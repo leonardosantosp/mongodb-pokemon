@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BD Pokemons</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Belanosima&family=Caprasimo&family=Fasthand&family=Noto+Sans&family=Permanent+Marker&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <header>
+    <a href="/"
+      ><h2>BD<img src="./images/pokemon-logo.png" alt="logo" /></h2
+    ></a>
+    <nav>
+      <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/newpokemon">New Pokémon</a></li>
+        <li><a href="/pokemons">All Pokémons</a></li>
+        <li><a href="/editpokemon">Edit Pokémon</a></li>
+        <li><a href="/deletepokemon">Delete Pokémon</a></li>
+      </ul>
+    </nav>
+  </header>
+  <body>
+    <main>
+      <h1>New Pokémon</h1>
+      <form class="form-container" action="/pokemon" method="POST">
+        <label for="types">Types:</label>
+        <input type="text" name="types" required />
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" required />
+
+        <label for="legendary">Legendary:</label>
+        <input type="checkbox" name="legendary" />
+
+        <label for="hp">HP:</label>
+        <input type="number" name="hp" required />
+
+        <label for="attack">Attack:</label>
+        <input type="number" name="attack" required />
+
+        <label for="defense">Defense:</label>
+        <input type="number" name="defense" required />
+
+        <label for="speed">Speed:</label>
+        <input type="number" name="speed" required />
+
+        <label for="generation">Generation:</label>
+        <input type="number" name="generation" required />
+
+        <button type="submit">Add Pokémon</button>
+      </form>
+    </main>
+  </body>
+</html>

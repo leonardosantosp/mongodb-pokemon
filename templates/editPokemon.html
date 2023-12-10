@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BD Pokemons</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Belanosima&family=Caprasimo&family=Fasthand&family=Noto+Sans&family=Permanent+Marker&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="/">
+        <h2>BD<img src="./images/pokemon-logo.png" alt="logo" /></h2>
+      </a>
+      <nav>
+        <ul class="menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/newpokemon">New Pokémon</a></li>
+          <li><a href="/pokemons">All Pokémons</a></li>
+          <li><a href="/editpokemon">Edit Pokémon</a></li>
+          <li><a href="/deletepokemon">Delete Pokémon</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Edit Pokémon</h1>
+
+      <form class="form-edit" id="editPokemonForm">
+        <label for="pokemonId">Pokémon ID:</label>
+        <input type="text" id="pokemonId" name="pokemonId" required />
+
+        <label for="types">Types:</label>
+        <input type="text" id="types" name="types" required />
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="legendary">Legendary:</label>
+        <input type="checkbox" id="legendary" name="legendary" />
+
+        <label for="hp">HP:</label>
+        <input type="number" id="hp" name="hp" required />
+
+        <label for="attack">Attack:</label>
+        <input type="number" id="attack" name="attack" required />
+
+        <label for="defense">Defense:</label>
+        <input type="number" id="defense" name="defense" required />
+
+        <label for="speed">Speed:</label>
+        <input type="number" id="speed" name="speed" required />
+
+        <label for="generation">Generation:</label>
+        <input type="number" id="generation" name="generation" required />
+
+        <button type="submit">Save Changes</button>
+      </form>
+    </main>
+
+    <script>
+      document
+        .getElementById('editPokemonForm')
+        .addEventListener('submit', function (event) {
+          event.preventDefault()
+
+          const pokemonId = document.getElementById('pokemonId').value
+          const types = document.getElementById('types').value
+          const name = document.getElementById('name').value
+          const legendary = document.getElementById('legendary').checked
+          const hp = document.getElementById('hp').value
+          const attack = document.getElementById('attack').value
+          const defense = document.getElementById('defense').value
+          const speed = document.getElementById('speed').value
+          const generation = document.getElementById('generation').value
+
+          // Enviar requisição PATCH para a API
+          fetch(`/pokemon/${pokemonId}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              types,
+              name,
+              legendary,
+              hp,
+              attack,
+              defense,
+              speed,
+              generation
+            })
+          })
+            .then(response => response.json())
+            .then(data => {
+              alert('Pokémon updated successfully!')
+              console.log(data)
+            })
+            .catch(error => {
+              alert('Error updating Pokémon. Please try again.')
+              console.error('Error:', error)
+            })
+        })
+    </script>
+  </body>
+</html>

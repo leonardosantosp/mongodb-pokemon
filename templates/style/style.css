@@ -1,0 +1,236 @@
+*{ 
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  overflow-x: hidden;
+  background-color: #dcdcdc;
+}
+
+/* HEADER */
+header{
+  height: 100px;
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  box-shadow: 0px 0px 5px 0 gray;
+}
+
+header a{
+  text-decoration: none;
+  color: black;
+}
+
+header img{
+  height: 60px;
+  width: 140px;
+}
+
+header h2{
+  font-family: 'Permanent Marker', cursive;
+  position: relative;
+  left: 20px;
+  top: 10px;
+  font-size: 50px;
+  text-decoration: none;
+  color:  #3e5cb2;
+}
+
+header h2 span{
+  color: rgb(90, 90, 249);
+}
+
+h1{
+  font-family: 'Permanent Marker', cursive;
+  margin-bottom: 20px;
+  position: relative;
+  top: 120px;
+  left: 530px;
+  color: rgb(90, 90, 249);
+}
+
+section{
+  height: 643px;
+}
+
+/* MENU */
+.menu{
+  list-style: none;
+  display: flex;
+  float: right;
+  position: relative;
+  bottom: 30px;
+  right: 30px;
+}
+
+.menu li{
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.menu a{  
+  position: relative;
+  font-family: Belanosima, sans-serif;
+}
+
+.menu a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: rgb(90, 90, 249);
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+.menu li a:hover{
+  color: rgb(90, 90, 249);
+}
+
+.menu li a:hover:after{
+  width: 100%;
+}
+
+.box-image img{
+  position: relative;
+  width: 650px;
+  height: 500px;
+  border-radius: 30px;
+  top: 115px;
+  left: 320px;
+}
+
+.list-pokemon {
+  margin-top: 160px;
+  border: 2px solid rgb(90, 90, 249);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  background-color: #F4F4F4; /* Cor de fundo da lista */
+  border-radius: 10px; /* Borda arredondada */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.list-pokemon li {
+  margin-bottom: 15px;
+  text-align: center;
+  background-color: #FFF; /* Cor de fundo de cada item da lista */
+  padding: 10px;
+  border-radius: 8px; /* Borda arredondada para cada item */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para cada item */
+  transition: transform 0.3s ease-in-out; /* Transição suave ao passar o mouse */
+}
+
+.list-pokemon li:hover {
+  transform: scale(1.05); /* Efeito de escala ao passar o mouse */
+}
+
+.form-container {
+  position: relative;
+  top: 150px;
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-container input,
+.form-container select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-container button {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #34495e;
+}
+
+.form-edit {
+  position: relative;
+  top: 150px;
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-edit label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-edit input,
+.form-edit select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-edit button {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-edit button:hover {
+  background-color: #34495e;
+}
+
+.pokemon-item {
+  position: relative;
+  top: 150px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  align-items: center;
+}
+
+.pokemon-info {
+  flex-grow: 1;
+}
+
+button {
+  background-color: #e44d26;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #333;
+}

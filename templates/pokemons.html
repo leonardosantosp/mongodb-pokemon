@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BD Pokemons</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Belanosima&family=Caprasimo&family=Fasthand&family=Noto+Sans&family=Permanent+Marker&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <header>
+    <a href="/"
+      ><h2>BD<img src="./images/pokemon-logo.png" alt="logo" /></h2
+    ></a>
+    <nav>
+      <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/newpokemon">New Pokémon</a></li>
+        <li><a href="/pokemons">All Pokémons</a></li>
+        <li><a href="/editpokemon">Edit Pokémon</a></li>
+        <li><a href="/deletepokemon">Delete Pokémon</a></li>
+      </ul>
+    </nav>
+  </header>
+  <body>
+    <main>
+      <h1>All Pokemóns in BD</h1>
+
+      <ul class="list-pokemon" id="pokemonList">
+        <!-- Aqui será renderizada a lista de Pokémon -->
+      </ul>
+    </main>
+
+    <script>
+      // Função para buscar e exibir os Pokémon
+      function fetchAndDisplayPokemons() {
+        fetch('/pokemon')
+          .then(response => response.json())
+          .then(pokemons => {
+            const pokemonList = document.getElementById('pokemonList')
+
+            // Limpar a lista antes de adicionar novos Pokémon
+            pokemonList.innerHTML = ''
+
+            // Adicionar cada Pokémon à lista
+            pokemons.forEach(pokemon => {
+              const listItem = document.createElement('li')
+              listItem.textContent = `${
+                pokemon.name
+              } - Type: ${pokemon.types.join(', ')}`
+              pokemonList.appendChild(listItem)
+            })
+          })
+          .catch(error => console.error('Error fetching Pokémon:', error))
+      }
+
+      // Chamar a função ao carregar a página
+      fetchAndDisplayPokemons()
+    </script>
+  </body>
+</html>
